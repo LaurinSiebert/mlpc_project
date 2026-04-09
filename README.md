@@ -5,10 +5,13 @@ The goal is to develop a Sound Event Detection model for smart home environments
 ---
 
 ## Folder Structure
-- "data/" - datasets on different stages.
-  -> "MLPC2026_dataset_development/" - includes .csv for metadata and annotations
-    -> "audio_features/" - .npz files for all samples with metadata and pre-calculated audio features
+- "data/" - place the dataset here
 - "notebooks/" - exploratory analysis and experiments
 - "src/" - main scripts or functions
 - "requirements.txt" - requirements file for conda env
 - "README.md"
+
+# Setup
+- git clone <repo_url>
+- Get dataset from the courses Moodle page and place it locally in a directory "data"
+- create conda env and pip install -r requirements.txt
