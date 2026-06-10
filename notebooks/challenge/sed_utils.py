@@ -103,7 +103,6 @@ def get_segment_labels(data: dict) -> np.ndarray:
     y = (votes > (n_annotators // 2)).astype(int)
     return y
 
-
 def load_all_segments(
     file_list: List[str],
 ) -> Tuple[np.ndarray, np.ndarray]:
@@ -158,7 +157,8 @@ def run_sed_inference(
     X_all = build_feature_matrix(data)     # shape: (N_all_segments, D_features)
 
     # Apply the classifier to every segment
-    pred_all = classifier.predict(X_all)   # shape: (N_all_segments, N_classes)
+    # MODIFIED FROM BASE VERSION - was: pred_all = classifier.predict(X_all)
+    pred_all = classifier.predict(X_all) if hasattr(classifier, "predict") else classifier(X_all) # shape: (N_all_segments, N_classes)
 
     # Identify segments that start at a whole-second timestamp (0.0, 1.0, 2.0, ...)
     whole_second_mask = np.isclose(start_times_all % 1.0, 0.0)
@@ -222,7 +222,6 @@ def predictions_to_intervals(
                          "onset": onset, "offset": offset})
 
     return rows
-
 
 def generate_predictions(
     file_list: List[str],
