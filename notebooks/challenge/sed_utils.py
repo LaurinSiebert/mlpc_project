@@ -127,7 +127,7 @@ def load_all_segments(
 
 def run_sed_inference(
     filepath: str,
-    classifier: MultiOutputClassifier,
+    classifier: MultiOutputClassifier
 ) -> Tuple[np.ndarray, np.ndarray, str]:
     """Run SED inference on a single recording.
 
